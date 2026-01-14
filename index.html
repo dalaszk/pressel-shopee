@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#FF6B35">
+    <title>VSL Financeira - Simule Seu Potencial</title>
+    <meta name="description" content="Análise inteligente do seu potencial financeiro em segundos. Processo 100% online, seguro e sem compromisso.">
+    <meta name="keywords" content="simulação financeira, análise de crédito, potencial financeiro">
+    <meta property="og:title" content="VSL Financeira - Simule Seu Potencial">
+    <meta property="og:description" content="Descubra seu potencial financeiro agora">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #FFFFFF;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #4B5563;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F0 50%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(26, 58, 82, 0.08);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 100%;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 .highlight {
+            color: #FF6B35;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #1A1A1A;
+            font-weight: 500;
+        }
+
+        .badge-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .badge.security .badge-icon { color: #10B981; }
+        .badge.speed .badge-icon { color: #FF6B35; }
+        .badge.easy .badge-icon { color: #10B981; }
+
+        /* ===== CTA BUTTON ===== */
+        .btn-cta {
+            display: inline-block;
+            width: 100%;
+            max-width: 100%;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            text-align: center;
+            animation: pulse-subtle 2s ease-in-out infinite;
+        }
+
+        .btn-cta:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5); }
+        }
+
+        .btn-secondary {
+            font-size: 0.9rem;
+            color: #4B5563;
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* ===== CARD MOCKUP ===== */
+        .card-mockup {
+            margin-top: 3rem;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            color: white;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+            animation: cardBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes cardBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .card-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            width: 75%;
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            animation: fillProgress 2s ease-out;
+        }
+
+        @keyframes fillProgress {
+            from { width: 0%; }
+            to { width: 75%; }
+        }
+
+        .card-status {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            background: linear-gradient(135deg, #1A3A52 0%, #2D5A7B 100%);
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .proof-item {
+            animation: fadeIn 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .proof-item:nth-child(1) { animation-delay: 0.1s; }
+        .proof-item:nth-child(2) { animation-delay: 0.2s; }
+        .proof-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .proof-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FF6B35;
+        }
+
+        .proof-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #4B5563;
+            font-size: 1rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .step {
+            background: #F8F9FA;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .step:nth-child(2) { animation-delay: 0.1s; }
+        .step:nth-child(3) { animation-delay: 0.2s; }
+
+        .step:active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #FF6B35;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            color: #1A1A1A;
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: #4B5563;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F0F4F8 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1rem;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .feature:nth-child(2) { animation-delay: 0.1s; }
+        .feature:nth-child(3) { animation-delay: 0.2s; }
+        .feature:nth-child(4) { animation-delay: 0.3s; }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #FF6B35;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1A1A1A;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: #4B5563;
+            margin: 0;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: #F8F9FA;
+            border-radius: 16px;
+            padding: 1.5rem;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .testimonial:nth-child(2) { animation-delay: 0.1s; }
+        .testimonial:nth-child(3) { animation-delay: 0.2s; }
+
+        .stars {
+            color: #FCD34D;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .testimonial-text {
+            color: #1A1A1A;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1A1A1A;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-location {
+            color: #4B5563;
+            font-size: 0.85rem;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .final-cta .btn-cta {
+            background: white;
+            color: #FF6B35;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .final-cta .btn-secondary {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1A1A1A;
+            color: #999;
+            padding: 2rem 1.5rem;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:active {
+            color: #FF6B35;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .footer-divider {
+            border-top: 1px solid #333;
+            margin: 1.5rem 0;
+        }
+
+        .footer-bottom {
+            color: #666;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            h3 { font-size: 1.75rem; }
+
+            .hero {
+                padding: 3rem 2rem;
+            }
+
+            .hero-content {
+                max-width: 600px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body { background: white; }
+            .hero::before, .hero::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Simule agora e <span class="highlight">libere seu potencial</span> financeiro</h1>
+            <p class="hero-subtitle">Processo 100% online, seguro e sem compromisso. Análise inteligente com resultado em segundos.</p>
+
+            <div class="trust-badges">
+                <div class="badge security">
+                    <div class="badge-icon">🔒</div>
+                    <span>Seus dados 100% protegidos</span>
+                </div>
+                <div class="badge speed">
+                    <div class="badge-icon">⚡</div>
+                    <span>Resultado em menos de 30 segundos</span>
+                </div>
+                <div class="badge easy">
+                    <div class="badge-icon">✓</div>
+                    <span>Sem necessidade de documentos</span>
+                </div>
+            </div>
+
+            <button class="btn-cta" onclick="scrollToForm()">Verificar Disponibilidade →</button>
+            <p class="btn-secondary">✓ Grátis • ✓ Rápido • ✓ Seguro</p>
+
+            <div class="card-mockup">
+                <div class="card">
+                    <div class="card-label">Seu Potencial Financeiro</div>
+                    <div class="card-amount">R$ 45.000</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="card-status">Análise concluída com sucesso</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOCIAL PROOF ===== -->
+    <section class="social-proof">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number" id="userCount">125.000</div>
+                <div class="proof-label">Usuários Verificados</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number" id="simulationCount">450.000</div>
+                <div class="proof-label">Simulações Realizadas</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">98%</div>
+                <div class="proof-label">Satisfação</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works">
+        <div class="section-title">
+            <h2>Como funciona?</h2>
+            <p class="section-subtitle">Três passos simples para descobrir seu potencial financeiro</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Responda Perguntas</h3>
+                <p>Preencha um breve formulário com suas informações financeiras básicas.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Análise Inteligente</h3>
+                <p>Nosso sistema analisa seus dados com inteligência artificial avançada.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Resultado Imediato</h3>
+                <p>Receba seu potencial financeiro e próximas oportunidades em segundos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features">
+        <div class="section-title">
+            <h2>Por que escolher a gente?</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-content">
+                    <h3>Segurança em Primeiro Lugar</h3>
+                    <p>Criptografia de ponta a ponta e conformidade com LGPD. Seus dados nunca são compartilhados.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                    <h3>Resultado em Segundos</h3>
+                    <p>Tecnologia de ponta que processa sua análise financeira em menos de 30 segundos.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <div class="feature-content">
+                    <h3>Análise Inteligente</h3>
+                    <p>IA avançada que avalia seu perfil financeiro de forma justa e precisa.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⏰</div>
+                <div class="feature-content">
+                    <h3>Sem Compromisso</h3>
+                    <p>Simule quantas vezes quiser. Nenhuma obrigação de contratar qualquer serviço.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>O que nossos usuários dizem</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Muito rápido e fácil! Recebi meu resultado em menos de um minuto. Recomendo!"</p>
+                <div class="testimonial-author">João Silva</div>
+                <div class="testimonial-location">São Paulo, SP</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Não esperava um resultado tão preciso. Muito bom mesmo! Já compartilhei com amigos."</p>
+                <div class="testimonial-author">Maria Santos</div>
+                <div class="testimonial-location">Rio de Janeiro, RJ</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Seguro e confiável. Meus dados ficaram protegidos e recebi tudo que prometi."</p>
+                <div class="testimonial-author">Carlos Oliveira</div>
+                <div class="testimonial-location">Belo Horizonte, MG</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
+        <h2>Pronto para descobrir seu potencial?</h2>
+        <p>Simule agora mesmo. É grátis, rápido e seguro. Nenhum compromisso.</p>
+        <button class="btn-cta" onclick="scrollToForm()">Verificar Disponibilidade Agora</button>
+        <p class="btn-secondary">✓ Análise em menos de 30 segundos • ✓ Sem documentos • ✓ 100% seguro</p>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-links">
+            <a href="#politica">Política de Privacidade</a>
+            <a href="#termos">Termos de Uso</a>
+            <a href="#ouvidoria">Ouvidoria</a>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VSL Financeira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animar contadores
+        function animateCounter(elementId, finalValue) {
+            const element = document.getElementById(elementId);
+            const increment = finalValue / 50;
+            let current = 0;
+
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= finalValue) {
+                    current = finalValue;
+                    clearInterval(interval);
+                }
+                element.textContent = Math.floor(current).toLocaleString('pt-BR');
+            }, 30);
+        }
+
+        // Iniciar animação dos contadores quando a seção ficar visível
+        function observeCounters() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        animateCounter('userCount', 125000);
+                        animateCounter('simulationCount', 450000);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const proofSection = document.querySelector('.social-proof');
+            if (proofSection) {
+                observer.observe(proofSection);
+            }
+        }
+
+        // Scroll suave para formulário
+        function scrollToForm() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+            
+            // Aqui você pode adicionar um formulário ou redirecionar para uma página
+            alert('Formulário de simulação - Adicione seu formulário aqui!');
+        }
+
+        // Inicializar quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', () => {
+            observeCounters();
+        });
+
+        // Prevenir zoom em inputs no mobile
+        document.addEventListener('touchmove', (e) => {
+            if (e.scale !== 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
